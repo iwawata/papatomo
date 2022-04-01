@@ -1,24 +1,40 @@
-# README
+『サイト名』
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+　パパとも
 
-Things you may want to cover:
+『サイト概要』
 
-* Ruby version
+　もうすぐパパになる方やもうすでにパパになっている方の悩みや不安を話したりして、楽しく子育てが出来る交流の場です。
 
-* System dependencies
+『サイトテーマ』
 
-* Configuration
+　パパの子育てが楽しくなる！
 
-* Database creation
+『テーマを選んだ理由』
 
-* Database initialization
+　パパはお仕事が忙しくなかなか子供のお世話が出来なくママに任せっきりになったり、ママのお手伝いをしようと思ってもうまく上手くい
+　かない事もあります。そんな時このサイトで先輩パパにアドバイスをもらったりすることで、「楽しく子育てが出来るように！」とこのテ
+　ーマを選びました。
 
-* How to run the test suite
+『ターゲットユーザー』
 
-* Services (job queues, cache servers, search engines, etc.)
+　全国のお父さん
 
-* Deployment instructions
+『主な利用シーン』
 
-* ...
+　子育てで悩んだりする時や子供にどのように接すれば良いか分からなくなった時
+
+『設計書』
+
+　<...>
+
+『開発環境』
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JS ライブラリ：jQuery
+- IDE：Cloud9
+
+『使用素材』
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名と URL を明記してください。
+- 使用しない場合は、使用素材の項目を README から削除してください。
