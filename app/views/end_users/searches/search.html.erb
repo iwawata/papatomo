@@ -1,0 +1,56 @@
+<ul class="nav justify-content-center bg-light">
+  <li class="nav-item mt-3 mb-3 text-monospace">
+    <h6>
+    <% @genres.each do |genre| %>
+      <%= link_to posts_path(genre_id: genre.id), class:"card-hover" do %>
+        <span class="text-dark mr-4 ml-4"><%= genre.genre_name %></span>
+      <% end %>
+    <% end %>
+    </h6>
+  </li>
+</ul>
+<div class="container">
+  <div class="row mt-4 mb-4">
+    <h5 class="font-weight-bold">投稿一覧</h5>
+  </div>
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-md-12 mb-3"> <!-- FIX Grid -->
+        <div class="card">
+          <div class="card-header shadow-sm bg-white ">
+            <%= image_tag post.end_user.get_profile_image, class:"mr-4 rounded-circle", size: '50x50' %>
+            <span class="font-weight-bold" ><%= post.end_user.nick_name%></span>
+            <div class="float-right mt-2">
+            <span class="mr-3"><i class="fa fa-comment"></i> <%= post.post_comments.count %></span>
+            <% if post.favorited_by?(current_end_user) %>
+            <span class="mr-3">
+                <i class="fa fa-heart" aria-hidden="true"></i> <%= post.favorites.count %>
+            </span>
+            <% else %>
+            <span class="mr-3">
+                <i class="fa fa-heart" aria-hidden="true"></i> <%= post.favorites.count %>
+            </span>
+            <% end %>
+
+              <i class="fa fa-calendar mr-2"></i><%= post.created_at.strftime('%Y/%m/%d') %>
+            </div>
+          </div>
+          <%= link_to post_path(post.id), class: "card-hover" do %>
+          <div class="card-body">
+            <div class="row text-dark">
+              <div class="<%= post.get_image.blank? ? 'col-md-12' : 'col-md-6' %>">
+                <%= post.caption %>
+              </div>
+              <% unless post.get_image.blank? %>
+                <div class="col-md-6">
+                    <%= image_tag post.get_image, size: '300x200', class: 'rounded-sm img-fluid d-block mx-auto' %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

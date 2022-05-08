@@ -1,0 +1,48 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-3 mb-5">
+      <h5 class="text-center bg-light mt-5"><%= @end_user.nick_name %>さんの会員詳細</h5>
+   </div>
+  </div>
+
+  <div class="row">
+    <div class="col-8 mb-2">
+      <table class="table">
+        <tr style="height: 85px;">
+          <th class="pt-4">会員ID</th>
+        <th class="pt-4 pl-5"><%= @end_user.id %></th>
+        </tr>
+        <tr>
+          <th class="pt-4">トップ画像</th>
+          <th><span class="pl-2"><%= image_tag @end_user.get_profile_image, class:"rounded-circle", size: '80x60' %></span></th>
+        </tr>
+        <tr style="height: 85px;">
+          <th class="pt-4">氏名</th>
+          <th class="pt-4 pl-5"><%= @end_user.nick_name %></th>
+        </tr>
+        <tr style="height: 85px;">
+          <th class="pt-4">メールアドレス</th>
+          <th class="pt-4 pl-5"><%= @end_user.email %></th>
+        </tr>
+        <tr style="height: 85px;">
+          <th class="pt-4">会員ステータス</th>
+          <th class="pt-4 pl-5">
+            <%if @end_user.is_deleted == false %>
+             <p class="text-success">有効</p>
+            <% else %>
+             <p class="text-secondary">退会済</p>
+            <% end %>
+          </th>
+        </tr>
+      </table>
+    </div>
+
+
+    <div class="col-12">
+      <tr class="text-center">
+        <th><%= link_to "編集する",edit_admins_customer_path, class: "btn btn-success offset-4" %></th>
+      </tr>
+    </div>
+  </div>
+</div>
