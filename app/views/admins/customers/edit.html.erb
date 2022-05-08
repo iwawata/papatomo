@@ -1,0 +1,47 @@
+<div class="container">
+
+  <div class="row ">
+    <div class="col-8 mt-5">
+      <h5 class="text-center"><%= @end_user.nick_name %>さんの会員情報編集</h5>
+    </div>
+  </div>
+
+  <div class="row text-center">
+    <div class="col-12 mt-3">
+      <%= form_with model: @end_user, url: admins_customer_path, local: true do |f| %>
+        <form>
+          <div class="form-group col-xs-9 pt-3" style="height: 60px">
+            <%= f.label :id,"会員ID", class: "col-sm-2" %>
+            <span class="pl-5"><%= @end_user.id %></span>
+          </div>
+          <div class="form-group col-xs-9">
+            <%= f.label :トップ画像, class: "col-sm-2", style: "height: 60px" %>
+            <%= image_tag @end_user.get_profile_image, class:"rounded-circle ml-4", size: '80x60' %>
+          </div>
+          <div class="form-group col-xs-9" style="height: 60px">
+            <%= f.label :氏名, class: "col-sm-2" %>
+            <span class="pl-5"><%= @end_user.nick_name %></span>
+          </div>
+          <div class="form-group col-xs-9" style="height: 60px">
+            <%= f.label :メールアドレス, class: "col-sm-2" %>
+            <span class="pl-5"><%= @end_user.email %></span>
+          </div>
+          <div class="form-group col-xs-9" style="height: 60px">
+              <%= f.label :会員ステータス, class: "col-sm-2" %>
+            <span class="pl-5">
+              <%= f.radio_button :is_deleted, false %>
+              <%= f.label :会員ステータス, "有効", value: false %>
+            </span>
+            <span class="pl-5">
+              <%= f.radio_button :is_deleted, true %>
+              <%= f.label :会員ステータス, '退会', value: true %>
+            </span>
+          </div>
+          <div class="form-group">
+            <%= f.submit "変更を保存", class: "btn btn-success offset-2" %>
+          </div>
+        </form>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -10,7 +10,7 @@ class EndUsers::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   # def create
-  #   super
+    # super
   # end
 
   # DELETE /resource/sign_out
@@ -24,4 +24,22 @@ class EndUsers::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  # def reject_user
+  #   @end_user = EndUser.find_by(name: params[:end_user][:name])
+  #   if @end_user
+  #     if @end_user.valid_password?(params[:end_user][:password]) && (@user.is_deleted == false)
+  #       flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+  #       redirect_to new_end_user_registration
+  #     else
+  #       flash[:notice] = "項目を入力してください"
+  #     end
+  #   end
+  # end
+
+  def guest_sign_in
+    end_user = EndUser.guest
+    sign_in end_user
+    redirect_to posts_path, notice: 'guestuserでログインしました。'
+  end
 end
