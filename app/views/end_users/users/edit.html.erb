@@ -3,6 +3,14 @@
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
       <h5 class="text-dark bg-light p-4 mb-0">会員情報編集</h5>
       <div class="form-body p-4">
+        <% if @end_user.errors.any? %>
+          <%= @end_user.errors.count %>件が未入力です！！！
+          <ul>
+            <% @end_user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
         <%= form_with model:@end_user, url: user_path do |f| %>
           <div class="row form-group">
             <h5 class="mt-2">ニックネーム</h5>

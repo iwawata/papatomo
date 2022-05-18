@@ -1,0 +1,11 @@
+<span class="ml-3">
+  <% if post.favorited_by?(current_end_user) %>
+    <%= link_to(post_favorites_path(post), class:"text-dark card-hover", method: :delete, remote: true) do %>
+      <i class="fa fa-heart" aria-hidden="true"></i> <%= post.favorites.count %>
+    <% end %>
+  <% else %>
+    <%= link_to(post_favorites_path(post), class:"text-dark card-hover", method: :post, remote: true) do %>
+      <i class="fa fa-heart" aria-hidden="true"></i> <%= post.favorites.count %>
+    <% end %>
+  <% end %>
+</span>

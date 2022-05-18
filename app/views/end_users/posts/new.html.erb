@@ -3,7 +3,15 @@
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
       <h5 class="text-dark bg-light p-4 mb-0">新規投稿フォーム</h5>
       <div class="form-body p-4">
-        <%= form_with model: @post do |f| %>
+        <% if @post.errors.any? %>
+          <%= @post.errors.count %>件のエラーが発生しました
+          <ul>
+            <% @post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+                <%= form_with model: @post do |f| %>
           <div class="input-group mb-3">
             <%= f.text_area :caption, class:"form-control", rows:"5", placeholder:"投稿内容" %>
           </div>

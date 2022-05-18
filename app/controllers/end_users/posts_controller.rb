@@ -1,4 +1,7 @@
 class EndUsers::PostsController < ApplicationController
+   before_action :ensure_guest_user, only: [:new]
+   before_action :authenticate_end_user!, except: [:top]
+
   def new
     @post = Post.new
   end
@@ -22,8 +25,11 @@ class EndUsers::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.end_user_id = current_end_user.id
-    @post.save
-    redirect_to posts_path
+    if @post.save
+      redirect_to posts_path
+    else
+     render :new
+    end
   end
 
   def update
@@ -39,5 +45,10 @@ class EndUsers::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:image, :caption, :profile_image, :genre_id)
+  end
+  def ensure_guest_user
+    if current_end_user.nick_name == "ゲストユーザー"
+      redirect_to posts_path, notice: 'ゲストユーザーは投稿出来ません。'
+    end
   end
 end

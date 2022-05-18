@@ -1,4 +1,7 @@
 class EndUsers::UsersController < ApplicationController
+  before_action :ensure_guest_user, only: [:edit]
+  before_action :authenticate_end_user!, except: [:top]
+
   def show
     @end_user = current_end_user
     @posts = Post.all
@@ -42,4 +45,9 @@ class EndUsers::UsersController < ApplicationController
     params.require(:end_user).permit(:nick_name, :is_deleted, :email, :profile_image)
  end
 
+  def ensure_guest_user
+    if current_end_user.nick_name == "ゲストユーザー"
+      redirect_to posts_path, notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    end
+  end
 end

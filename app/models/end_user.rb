@@ -8,12 +8,14 @@ class EndUser < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
+  validates :nick_name, presence: true
+
   has_one_attached :profile_image
 
   def self.guest
-    find_or_create_by!(nick_name: 'guestuser' ,email: 'guest@example.com') do |end_user|
+    find_or_create_by!(nick_name: 'ゲストユーザー' ,email: 'guestuser@example.com') do |end_user|
       end_user.password = SecureRandom.urlsafe_base64
-      end_user.nick_name = "guestuser"
+      end_user.nick_name = "ゲストユーザー"
     end
   end
 
@@ -28,5 +30,5 @@ class EndUser < ApplicationRecord
   def active_for_authentication?
     super && (is_deleted == false)
   end
-  
+
 end
