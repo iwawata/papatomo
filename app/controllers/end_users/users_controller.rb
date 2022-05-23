@@ -47,7 +47,7 @@ class EndUsers::UsersController < ApplicationController
 
   def ensure_guest_user
     if current_end_user.nick_name == "ゲストユーザー"
-      redirect_to posts_path, notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+      redirect_to posts_path
     end
   end
 end

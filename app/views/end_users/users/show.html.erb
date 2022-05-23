@@ -77,7 +77,9 @@
         <div class="card mb-3 mt-3">
           <div class="card-header shadow-sm bg-white">
             <%= image_tag favorite.post.end_user.get_profile_image, class:"mr-4 rounded-circle", size: '50x50' %>
+            <%= link_to details_user_path(favorite.post.end_user), class: "card-hover text-dark" do %>
             <sapn class="font-weight-bold"><%= favorite.post.end_user.nick_name %></sapn>
+            <% end %>
             <span class="float-right mt-2"><i class="fa fa-comment"></i> <%= favorite.post.post_comments.count %>
             <span class="ml-3">
               <% if favorite.post.favorited_by?(current_end_user) %>

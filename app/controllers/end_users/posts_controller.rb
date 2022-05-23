@@ -48,7 +48,7 @@ class EndUsers::PostsController < ApplicationController
   end
   def ensure_guest_user
     if current_end_user.nick_name == "ゲストユーザー"
-      redirect_to posts_path, notice: 'ゲストユーザーは投稿出来ません。'
+      redirect_to posts_path
     end
   end
 end

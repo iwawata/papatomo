@@ -6,8 +6,9 @@
           <%= image_tag @post.end_user.get_profile_image, class:"rounded-circle ml-3", size: '50x50'  %>
         </div>
         <div class="col-10 mt-3">
+          <%= link_to details_user_path(@post.end_user), class: "card-hover text-dark" do %>
           <span class="font-weight-bold"><%= @post.end_user.nick_name %></span>
-
+          <% end %>
           <span class="float-right"><i class="fa fa-comment"></i> <%= @post.post_comments.count %>
             <span id="favorite_buttons_<%= @post.id %>">
               <%= render "end_users/favorites/favorite", post: @post %>
@@ -33,7 +34,9 @@
             <div class="media-body ml-2 p-2">
               <p>
                 <%= image_tag post_comment.end_user.get_profile_image, class:"bd-placeholder-img align-self-center rounded-circle mx-3 mt-1", size: '40x40'  %>
+                <%= link_to details_user_path(post_comment.end_user), class: "card-hover text-dark" do %>
                 <span class="font-weight-bold"><%= post_comment.end_user.nick_name %></span>
+                <% end %>
                 <span class="float-right mr-3"><i class="fa fa-calendar mt-3 ml-3"></i><span class="ml-2"><%= post_comment.created_at.strftime('%Y/%m/%d') %></span></span>
               </p>
               <p class="ml-5 mt-2"><%= post_comment.comment %></p>
