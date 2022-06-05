@@ -46,6 +46,11 @@
               <% unless post.get_image.blank? %>
                 <div class="col-md-6">
                     <%= image_tag post.get_image, size: '300x200', class: 'rounded-sm img-fluid d-block mx-auto' %>
+                    <div class="rounded-sm d-block mx-auto tags">
+                      <% post.tags.each do |tag| %>
+                        <span class="label"><%= tag.name %></span>
+                      <% end %>
+                    </div>
                 </div>
               <% end %>
             </div>

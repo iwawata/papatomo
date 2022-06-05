@@ -26,6 +26,10 @@ class EndUsers::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.end_user_id = current_end_user.id
     if @post.save
+      tags = Vision.get_image_data(@post.image)    
+      tags.each do |tag|
+      @post.tags.create(name: tag)
+    end
       redirect_to posts_path
     else
      render :new
